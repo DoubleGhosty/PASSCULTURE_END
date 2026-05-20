@@ -1,10 +1,23 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+
 from passculture import PassCultureClient
 from db import supabase
 
 app = FastAPI()
+
+# CORS CONFIG
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # later replace with your frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 client = PassCultureClient()
+
 
 class LoginRequest(BaseModel):
     email: str
@@ -31,6 +44,10 @@ def login(data: LoginRequest):
 @app.get("/profile/{email}")
 def profile(email: str):
     user = supabase.table("users").select("*").eq("email", email).execute()
+
+    if not user.data:
+        return {"error": "user_not_found"}
+
     token = user.data[0]["token"]
 
     return client.get_profile(token)
@@ -40,11 +57,16 @@ def profile(email: str):
 @app.get("/bookings/{email}")
 def bookings(email: str):
     user = supabase.table("users").select("*").eq("email", email).execute()
+
+    if not user.data:
+        return {"error": "user_not_found"}
+
     token = user.data[0]["token"]
 
     return client.get_bookings(token)
 
 
+# HEALTH CHECK
 @app.get("/health")
 def health():
     return {"status": "ok"}
