@@ -2,6 +2,7 @@ import requests
 import uuid
 import os
 from twocaptcha import TwoCaptcha
+from twocaptcha.captcha import ReCaptcha
 
 
 class PassCultureClient:
@@ -18,13 +19,14 @@ class PassCultureClient:
 
     def solve_captcha(self):
         try:
-            # Fixed method name
-            result = self.solver.solve_recaptcha(
-                sitekey="6LdWB0caAAAAAKfVe3he0FqXQXOepICF-5aZh_rQ",
-                url="https://passculture.app/connexion"
-            )
+            captcha = ReCaptcha()
 
-            return result["code"]
+            captcha.set_site_key("6LdWB0caAAAAAKfVe3he0FqXQXOepICF-5aZh_rQ")
+            captcha.set_url("https://passculture.app/connexion?preventCancellation=true")
+
+            self.solver.solve(captcha).wait()
+
+            return captcha.code
 
         except Exception as e:
             print(f"Captcha solving failed: {e}")
@@ -69,14 +71,10 @@ class PassCultureClient:
         try:
             r = requests.get(
                 f"{self.BASE_URL}/native/v1/me",
-                headers={
-                    "authorization": f"Bearer {token}"
-                },
+                headers={"authorization": f"Bearer {token}"},
                 timeout=30
             )
-
             return r.json()
-
         except Exception as e:
             print(f"Profile fetch failed: {e}")
             return None
@@ -85,14 +83,10 @@ class PassCultureClient:
         try:
             r = requests.get(
                 f"{self.BASE_URL}/native/v2/bookings/ended",
-                headers={
-                    "authorization": f"Bearer {token}"
-                },
+                headers={"authorization": f"Bearer {token}"},
                 timeout=30
             )
-
             return r.json()
-
         except Exception as e:
             print(f"Bookings fetch failed: {e}")
             return None
