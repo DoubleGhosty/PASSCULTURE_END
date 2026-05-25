@@ -35,7 +35,7 @@ def login(data: LoginRequest):
     supabase.table("users").upsert({
         "email": data.email,
         "token": token
-    }).execute()
+    }, on_conflict="email").execute()
 
     return {"token": token}
 
