@@ -25,3 +25,12 @@ node_modules/
 build/
 .env
 dist/
+
+# secrets
+backend/.env
+**/.env
+
+# compressed archives
+*.rar
+*.zip
+*.tar.gz
