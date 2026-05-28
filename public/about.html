@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PASS — À propos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">PASS</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html" class="active">À propos</a></li>
+      <li><a href="api-demo.html">API Demo</a></li>
+    </ul>
+  </nav>
+
+  <div class="about-container">
+    <h1>À propos du projet</h1>
+
+    <p>
+      PASS est une application full-stack développée dans le cadre du cours <strong>Digital Ecosystem</strong>
+      (ILAC × EFREI, Spring 2026). Elle permet aux utilisateurs de se connecter avec leurs identifiants
+      Pass Culture et de consulter leur profil, leur crédit restant, et leur historique de réservations
+      culturelles depuis une interface web moderne.
+    </p>
+
+    <p>
+      Le projet démontre une architecture cloud-native complète : intégration d'APIs externes,
+      orchestration côté serveur, stockage persistant dans une base de données managée, et déploiement
+      entièrement automatisé sur des plateformes cloud.
+    </p>
+
+    <p>
+      Toutes les clés API sont stockées dans des variables d'environnement côté serveur.
+      Aucun secret n'est exposé dans le code source ou dans le navigateur.
+    </p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h4>Frontend</h4>
+        <p>React — déployé sur Vercel</p>
+      </div>
+      <div class="tech-card">
+        <h4>Backend</h4>
+        <p>Python FastAPI — déployé sur Render</p>
+      </div>
+      <div class="tech-card">
+        <h4>Base de données</h4>
+        <p>Supabase PostgreSQL (cloud managé)</p>
+      </div>
+      <div class="tech-card">
+        <h4>APIs externes</h4>
+        <p>Pass Culture API · 2Captcha API</p>
+      </div>
+      <div class="tech-card">
+        <h4>Serveur statique</h4>
+        <p>Node.js + Express</p>
+      </div>
+      <div class="tech-card">
+        <h4>Source control</h4>
+        <p>GitHub — déploiement continu</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 PASS — Digital Ecosystem Project · ILAC × EFREI
+  </footer>
+
+</body>
+</html>
