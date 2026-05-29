@@ -1,12 +1,6 @@
 {
-  "name": "pass-culture-project",
-  "version": "1.0.0",
-  "description": "Pass Culture full-stack application — Digital Ecosystem Spring 2026",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
-  },
   "dependencies": {
-    "express": "^4.22.2"
+    "create-react-app": "^5.1.0",
+    "react-scripts": "^5.0.1"
   }
 }
