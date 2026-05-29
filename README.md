@@ -220,8 +220,8 @@ Install:
 # 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/passculture-project.git
-cd passculture-project
+git clone https://github.com/DoubleGhosty/PASSCULTURE_END.git
+cd PASSCULTURE_END
 ```
 
 ---
@@ -401,13 +401,13 @@ This project follows secure backend practices:
 ## 🎨 Frontend
 
 ```text
-https://passculture-project.vercel.app
+https://passculture-end.vercel.app
 ```
 
 ## 🐍 Backend
 
 ```text
-https://passculture-project.onrender.com
+https://passculture-end.onrender.com
 ```
 
 ---

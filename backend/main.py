@@ -10,7 +10,7 @@ app = FastAPI()
 # CORS CONFIG
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # later replace with your frontend URL
+    allow_origins=["https://passculture-end.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

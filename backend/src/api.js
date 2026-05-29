@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "https://passculture-project.onrender.com";
+const API = "https://passculture-end.onrender.com";
 
 export const login = (email, password) =>
   axios.post(`${API}/login`, { email, password });
